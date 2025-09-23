@@ -3,6 +3,7 @@ import {Button} from "./Button.tsx";
 type Props = {
     title: string
     tasks: Task[]
+    deleteTask: (taskId: Task["id"]) => void
 
 }
 export type Task = {
@@ -13,7 +14,8 @@ export type Task = {
 
 export const TodolistItem = ({
                                  title,
-                                 tasks
+                                 tasks,
+                                 deleteTask
                              }: Props) => {
 
     // const title = props.title
@@ -29,7 +31,11 @@ export const TodolistItem = ({
                         <li>
                             <input type="checkbox" checked={t.isDone}/>
                             <span>{t.title}</span>
+                            <Button value= "x"
+                            onClick={() => deleteTask(t.id)}
+                            />
                         </li>
+
                     )
                 })
             }

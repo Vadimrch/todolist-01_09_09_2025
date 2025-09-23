@@ -1,28 +1,32 @@
 import "./App.css"
 import {Task, TodolistItem} from "./TodolistItem.tsx";
+import {useState} from "react";
 
 function App() {
-    const todolistTitle_1 = "What to learn"
-    const todolistTitle_2 = "What to buy"
-    const task_1: Task[] = [
-        {id: 1, title: "HTML", isDone: true},
-        {id: 2, title: "CSS", isDone: true},
-        {id: 3, title: "JS", isDone: true},
-    ]
-    const task_2: Task[] = [
-        // {id: 4, title: "Cola", isDone: true},
-        // {id: 5, title: "Cheeps", isDone: true},
-        // {id: 6, title: "Beer", isDone: true},
-    ]
+    const todolistTitle = "What to learn"
+
+   const result = useState<Task[]>(
+        [
+            {id: 1, title: "HTML", isDone: true},
+            {id: 2, title: "CSS", isDone: true},
+            {id: 3, title: "JS", isDone: true},
+        ]
+    )
+
+const tasks = result[0]
+    const setTasks = result[1]
+
+    const deleteTask = (taskId: Task["id"]) => {
+        const nextState = tasks.filter(t => t.id !== taskId)
+        setTasks(nextState)
+    }
+console.log(tasks)
     return (
         <div className="app">
             <TodolistItem
-                title={todolistTitle_1}
-                tasks={task_1}
-            />
-            <TodolistItem
-                title={todolistTitle_2}
-                tasks={task_2}
+                title={todolistTitle}
+                tasks={tasks}
+                deleteTask={deleteTask}
             />
         </div>
     )
