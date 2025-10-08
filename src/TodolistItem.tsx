@@ -3,12 +3,12 @@ import {FilterValues} from "./App.tsx";
 
 type Props = {
     title: string
-    tasks: Task[]
-    deleteTask: (taskId: Task["id"]) => void
+    tasks: TaskType[]
+    deleteTask: (taskId: TaskType["id"]) => void
     changeTodolistFilter: (filter: FilterValues) => void
 
 }
-export type Task = {
+export type TaskType = {
     id: number
     title: string
     isDone: boolean
