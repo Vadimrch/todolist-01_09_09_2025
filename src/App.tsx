@@ -59,6 +59,7 @@ const createTask = (title: TaskType["title"]) => {
                 title={todolistTitle}
                 tasks={filteredTasks}
                 deleteTask={deleteTask}
+                createTask={createTask}
                 changeTodolistFilter={changeTodolistFilter}
             />
         </div>
